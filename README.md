@@ -2,24 +2,24 @@
 
 面向高职机电一体化、电气自动化、工业机器人等专业课程的课改材料 Skill。它用于撰写完整教案、80 分钟教学设计、实训工单和复习课材料，先核对信息，再依据课程资料写作和自检。
 
-仓库中只有通用规则：[SKILL.md](SKILL.md) 和 [详细范式与验收规则](references/material-spec.md)。**不含具体课程资料、学校 Word 模板或学生信息**；使用时请在自己的工作区提供这些文件。
+仓库中只有通用规则：[SKILL.md](SKILL.md)、[课次分配流程](references/schedule-mapping.md) 和 [详细范式与验收规则](references/material-spec.md)。**不含具体课程资料、学校 Word 模板或学生信息**；使用时请在自己的工作区提供这些文件。
 
 ## 最简单的安装方法：直接让 AI 安装
 
 在有网络和本地文件访问能力的 Codex 或 Claude Code 中，直接发送下面这段话即可。只给仓库名 `zcq19991029/kegai-skills` 也可以，但附上完整地址与目标名称更容易核对结果。
 
-> 请从 https://github.com/zcq19991029/kegai-skills 安装 `vocational-mechatronics-lesson-materials` Skill 到我的个人 Skills 目录。请保留 `SKILL.md` 和 `references/material-spec.md` 的相对位置；安装后检查两个文件均可读取，并告诉我如何调用。
+> 请从 https://github.com/zcq19991029/kegai-skills 安装 `kegai-skills` Skill 到我的个人 Skills 目录。请保留 `SKILL.md` 和整个 `references` 文件夹；安装后检查文件均可读取，并告诉我如何用 `$kegai-skills` 调用。
 
 在 Codex 中也可以先输入 `$skill-installer`，再发送上面的安装要求。安装是否需要额外确认，取决于你使用的软件权限设置。Codex 的官方说明支持从其他仓库安装 Skill；Claude Code 支持个人和项目级 Skill。[Codex Skills 文档](https://learn.chatgpt.com/docs/build-skills) · [Claude Code Skills 文档](https://code.claude.com/docs/en/skills)
 
 ## 手动安装
 
-将**整个仓库目录**放入下列位置之一。安装后应能找到 `.../vocational-mechatronics-lesson-materials/SKILL.md` 和同目录下的 `references/material-spec.md`。不要只复制 `SKILL.md`，否则详细规则无法加载。
+将**整个仓库目录**放入下列位置之一。安装后应能找到 `.../kegai-skills/SKILL.md` 和同目录下的 `references` 文件夹。不要只复制 `SKILL.md`，否则详细规则无法加载。
 
 | 使用范围 | Codex | Claude Code |
 | --- | --- | --- |
-| 所有本地项目 | `~/.agents/skills/vocational-mechatronics-lesson-materials/` | `~/.claude/skills/vocational-mechatronics-lesson-materials/` |
-| 当前项目 | `<项目根目录>/.agents/skills/vocational-mechatronics-lesson-materials/` | `<项目根目录>/.claude/skills/vocational-mechatronics-lesson-materials/` |
+| 所有本地项目 | `~/.agents/skills/kegai-skills/` | `~/.claude/skills/kegai-skills/` |
+| 当前项目 | `<项目根目录>/.agents/skills/kegai-skills/` | `<项目根目录>/.claude/skills/kegai-skills/` |
 
 部分 Codex 安装器使用 `$CODEX_HOME/skills`（默认 `~/.codex/skills`）作为个人 Skill 目录；使用内置 `$skill-installer` 时，以安装器实际写入的位置为准。上述 `~/.agents/skills` 是 [Codex 官方文档](https://learn.chatgpt.com/docs/build-skills) 列出的个人目录，Claude Code 的两个目录见其 [Skills 文档](https://code.claude.com/docs/en/skills)。
 
@@ -31,28 +31,28 @@ Windows PowerShell，安装到 Codex：
 
 ```powershell
 New-Item -ItemType Directory -Force "$HOME/.agents/skills" | Out-Null
-git clone https://github.com/zcq19991029/kegai-skills.git "$HOME/.agents/skills/vocational-mechatronics-lesson-materials"
+git clone https://github.com/zcq19991029/kegai-skills.git "$HOME/.agents/skills/kegai-skills"
 ```
 
 Windows PowerShell，安装到 Claude Code：
 
 ```powershell
 New-Item -ItemType Directory -Force "$HOME/.claude/skills" | Out-Null
-git clone https://github.com/zcq19991029/kegai-skills.git "$HOME/.claude/skills/vocational-mechatronics-lesson-materials"
+git clone https://github.com/zcq19991029/kegai-skills.git "$HOME/.claude/skills/kegai-skills"
 ```
 
 macOS、Linux 或 WSL，安装到 Codex：
 
 ```bash
 mkdir -p ~/.agents/skills
-git clone https://github.com/zcq19991029/kegai-skills.git ~/.agents/skills/vocational-mechatronics-lesson-materials
+git clone https://github.com/zcq19991029/kegai-skills.git ~/.agents/skills/kegai-skills
 ```
 
 安装到 Claude Code 时，把上面两处 `~/.agents/skills` 改为 `~/.claude/skills`。以后在克隆得到的目录中运行 `git pull` 即可获取仓库更新。
 
 ### 方法二：下载 ZIP
 
-打开仓库页面，点击 **Code → Download ZIP**，解压后把文件夹改名为 `vocational-mechatronics-lesson-materials`，再复制到上表中的个人或项目目录。确认文件夹内直接有 `SKILL.md`，而不是多套一层目录。
+打开仓库页面，点击 **Code → Download ZIP**，解压后把文件夹改名为 `kegai-skills`，再复制到上表中的个人或项目目录。确认文件夹内直接有 `SKILL.md`，而不是多套一层目录。
 
 ## 准备课程资料并使用
 
@@ -62,20 +62,29 @@ git clone https://github.com/zcq19991029/kegai-skills.git ~/.agents/skills/vocat
 
 第一次课可用课程说明和生活案例导入，无须虚构本课程旧知。PPT按进度选用：一份PPT可能分多次讲，一次课也可能覆盖几个小节。修改成品后只保留一个最新文件，不留多个带版本后缀的副本。
 
+只想先把课表截图转成可核对的本地排课表，可以这样说：
+
+```text
+$kegai-skills
+我已提供课程表截图和“XX课程课改”文件夹。请先核对每个班的单双周、星期和节次，计算每次80分钟的课次与总学时；再结合教学进度表、PPT和电子教材，把每次课的内容分配写入该课程文件夹的Markdown文件。请把文件链接给我，等我核对或修改后再批量写教学设计。
+```
+
+生成的Markdown会逐次列出周次、上课时段、进度表任务、80分钟知识边界及跨周衔接。若需要两个班各有一份，在指令末尾加上“请为两个班分别保存Markdown，同序号内容一致”。你可以直接修改任一文件，或告诉AI“第X次课改为……”。下次要求生成或调整教学设计时，AI应重新读取两份文件，按最新内容写作；两份文件同一课次若有冲突，先请你决定如何处理。
+
 Codex 调用示例：
 
 ```text
-$vocational-mechatronics-lesson-materials
+$kegai-skills
 课程名称：单片机应用技术；授课班级：XX机电1班；课时：2学时（80分钟）；
 授课地点：教学楼A101（机房）；文档类型：教学设计；
 授课任务和核心知识点：请按“单片机课改”文件夹的教学进度表第1次课确定。
 请使用我提供的机房教学设计 Word 模板，先核对资料，再生成可编辑文件。
 ```
 
-Claude Code 可将首行改为 `/vocational-mechatronics-lesson-materials`。两款工具也可在任务与 Skill 描述匹配时自动选用；如果没有自动选中，直接点名调用。Codex 的显式调用方式见 [官方文档](https://learn.chatgpt.com/docs/build-skills)，Claude Code 的斜杠调用方式见 [官方文档](https://code.claude.com/docs/en/skills)。
+Claude Code 可将首行改为 `/kegai-skills`。两款工具也可在任务与 Skill 描述匹配时自动选用；如果没有自动选中，直接点名调用。Codex 的显式调用方式见 [官方文档](https://learn.chatgpt.com/docs/build-skills)，Claude Code 的斜杠调用方式见 [官方文档](https://code.claude.com/docs/en/skills)。
 
 ## 常见检查
 
-- **提示找不到 Skill**：检查安装目录、`SKILL.md` 是否位于该目录第一层，以及文件夹名是否为 `vocational-mechatronics-lesson-materials`。Codex 若未显示新 Skill，可重启后再试。
-- **只能看到一部分规则**：检查 `references/material-spec.md` 是否与 `SKILL.md` 一起复制。
+- **输入 `$kegai-skills` 没显示**：仓库名和 `SKILL.md` 的 `name` 已统一为 `kegai-skills`。检查安装目录、`SKILL.md` 是否位于该目录第一层，以及文件夹名是否为 `kegai-skills`；若刚安装或更新后仍未出现，重启 Codex 再试。
+- **旧名称仍显示或只能看到一部分规则**：若曾安装 `vocational-mechatronics-lesson-materials`，删除旧文件夹并安装当前的 `kegai-skills`；检查 `references/material-spec.md` 和 `references/schedule-mapping.md` 是否与 `SKILL.md` 一起复制。
 - **内容与课程不符**：确认当前工作区里有对应课程资料，并在指令中写清课次、班级、场景和模板路径。
